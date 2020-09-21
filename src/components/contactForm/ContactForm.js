@@ -26,6 +26,7 @@ const ContactForm = () => {
     };
 
     const findName = items.find(el => el.name === contact.name);
+
     if (findName) {
       return dispatch(notificationAction('Contact already exists!'));
     } else if (isNaN(contact.number)) {

@@ -19,6 +19,7 @@ const filterReducer = createReducer('', {
 
 export const notificationReducer = createReducer('', {
   [notificationAction]: (_, { payload }) => payload,
+  [addContact]: _state => '',
 });
 
 export const contactsReducer = combineReducers({

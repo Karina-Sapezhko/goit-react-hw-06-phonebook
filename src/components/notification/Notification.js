@@ -1,18 +1,22 @@
 import React, { useEffect, useState } from 'react';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import styles from './Notification.module.css';
 import fadeNotificationStyles from '../../animationStyles/fadeNotification.module.css';
 import { CSSTransition } from 'react-transition-group';
+import { notificationAction } from '../../redux/actions';
 
 const Notification = () => {
   const [show, setShow] = useState(false);
+
   const { errors } = useSelector(state => state);
+  const dispatch = useDispatch();
 
   useEffect(() => {
     setShow(true);
     setTimeout(() => {
+      dispatch(notificationAction(''));
       setShow(false);
-    }, 3000);
+    }, 2000);
   }, [errors]);
 
   return (

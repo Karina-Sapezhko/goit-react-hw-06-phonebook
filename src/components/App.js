@@ -22,6 +22,12 @@ function App() {
     }
   }, []);
 
+  useEffect(() => {
+    if (items.length <= 1) {
+      setShowFilter(false);
+    }
+  }, [items]);
+
   return (
     <Layout>
       <Notification />
