@@ -16,24 +16,30 @@ const ContactList = () => {
   );
 
   return (
-    <TransitionGroup component="ul">
-      {filterContacts.map(({ id, name, number }) => (
-        <CSSTransition key={id} classNames={fadeListStyles} timeout={250}>
-          <li className={styles.item}>
-            <p className={styles.itemText}>
-              {name}: {number}
-            </p>
+    <>
+      {filterContacts.length === 0 ? (
+        <p className={styles.text}>No contacts</p>
+      ) : (
+        <TransitionGroup component="ul">
+          {filterContacts.map(({ id, name, number }) => (
+            <CSSTransition key={id} classNames={fadeListStyles} timeout={250}>
+              <li className={styles.item}>
+                <p className={styles.itemText}>
+                  {name}: {number}
+                </p>
 
-            <button
-              className={styles.button}
-              onClick={() => dispatch(deleteContact(id))}
-            >
-              Delete
-            </button>
-          </li>
-        </CSSTransition>
-      ))}
-    </TransitionGroup>
+                <button
+                  className={styles.button}
+                  onClick={() => dispatch(deleteContact(id))}
+                >
+                  Delete
+                </button>
+              </li>
+            </CSSTransition>
+          ))}
+        </TransitionGroup>
+      )}
+    </>
   );
 };
 

@@ -15,11 +15,11 @@ const Layout = ({ children }) => {
           unmountOnExit
         >
           <div className={styles.boxLogo}>
-            <img
+            {/* <img
               src="https://img.icons8.com/bubbles/2x/phone.png"
               alt="logo"
               width="60"
-            />
+            /> */}
             <h1 className={styles.titleLogo}>Phonebook</h1>
           </div>
         </CSSTransition>

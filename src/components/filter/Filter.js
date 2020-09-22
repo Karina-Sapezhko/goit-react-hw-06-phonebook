@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { CSSTransition } from 'react-transition-group';
 import fadeFilterStyles from '../../animationStyles/Filter.module.css';
 import StylesInput from '../contactForm/ContactForm.module.css';
@@ -11,8 +11,15 @@ const Filter = ({ showFilter }) => {
     contacts: { filter, items },
   } = useSelector(state => state);
 
-  const handleFilterChange = event =>
+  useEffect(() => {
+    if (items.length <= 1) {
+      dispatch(filterContacts(''));
+    }
+  }, [items]);
+
+  const handleFilterChange = event => {
     dispatch(filterContacts(event.currentTarget.value));
+  };
 
   return (
     <CSSTransition
